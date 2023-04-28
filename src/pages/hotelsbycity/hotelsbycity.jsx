@@ -23,7 +23,7 @@ const Hotelsbycity = () => {
 
   useEffect(() => {
     dispatch(searchByCity(desnation1));
-  }, [desnation1,dispatch]);
+  }, [desnation1]);
 
   return (
     <div>
@@ -98,7 +98,7 @@ const Hotelsbycity = () => {
             <button>Search</button>
           </div>
           <div className="listResult">
-            {hotelsByCity.length}
+           
             {hotelsByCity.map((hotel) => (
               <SearchItem hotel={hotel} key={hotel._id} />
             ))}

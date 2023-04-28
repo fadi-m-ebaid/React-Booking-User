@@ -3,7 +3,7 @@ import axiosConfig from '../../axiosConfig/axiosConfig';
 export default function setcity() {
   return (dispatch) => {
     return axiosConfig
-      .get(`/cities`)
+      .get(`/Cities`)
       .then((res) => {
         dispatch({ type: 'GET_city', payload: res.data });
       })
