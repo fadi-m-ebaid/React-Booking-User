@@ -19,6 +19,7 @@ import React, { useEffect, useState } from 'react';
 import axiosConfig from './../../axiosConfig/axiosConfig';
 import { useParams } from 'react-router-dom';
 import Reserve from "../../components/reserve/Reserve";
+import searchItem from "../../components/searchItem/SearchItem";
 import sethotel from '../../store/actions/action';
 
 const Hotel = () => {

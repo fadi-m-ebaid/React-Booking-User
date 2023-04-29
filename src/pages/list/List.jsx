@@ -86,16 +86,16 @@ const List = () => {
                             </div>
                         </div>
                         <button>Search</button>
-                    </div>
-                    <div className="listResult">
+                      </div>
+                       <div className="listResult">
                         {hotelsByCity.map(hotel => (<SearchItem hotel={hotel} key={hotel._id} />))}
 
                     </div>
                     <Link
-        to={`/MyWishList`}>
-      <button style={{backgroundColor:"#0d6efd",color:"white"}} className="btn rounded"
+             to={`/MyWishList`}>
+               <button style={{backgroundColor:"#0d6efd",color:"white"}} className="btn rounded"
      
-      >go to my MyWishList</button>
+              >go to my MyWishList</button>
       </Link>
                 </div>
             </div>

@@ -98,7 +98,7 @@ const Hotelsbycity = () => {
             <button>Search</button>
           </div>
           <div className="listResult">
-           
+           <div>{hotelsByCity.length}</div>
             {hotelsByCity.map((hotel) => (
               <SearchItem hotel={hotel} key={hotel._id} />
             ))}

@@ -1,4 +1,4 @@
-import axiosConfig from "../../axiosConfig/axiosConfig"
+import axiosConfig from '../../axiosConfig/axiosConfig';
 
 
 
@@ -11,7 +11,7 @@ export default function sethotel(page){
 
         })
             .catch((err) => {
-                console.log(err);
+               
             })
         }
  }

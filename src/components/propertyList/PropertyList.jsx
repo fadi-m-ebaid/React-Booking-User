@@ -51,7 +51,7 @@ const PropertyList = () => {
                     >
                       {city.CityName}
                     </h1>
-                    <h2>233 hotels</h2>
+                    <h2> hotels: {city.hotelsCount}</h2>
                   </div>
                 </div>
               </div>

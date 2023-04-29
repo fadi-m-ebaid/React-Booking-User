@@ -23,33 +23,34 @@ const SearchItem = ({ hotel }) => {
   
 
   const [desnation, setDestnation] = useState(location.state.destination) 
-  const addFav = useSelector((state) => state.haertToggleReducer.favMovies);
+  const addFav = useSelector((state) => state.haertToggleReducer.favMovies);addFav
   const [date, setDate] = useState(location.state.date) 
-  console.log(location.state.date); 
+  
   const [openDate, setOpenDate] = useState(false) 
   const [options, setOptions] = useState(location.state.options) 
   const hotelsByCity = useSelector((state) => state.search.hotelsByCity) 
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
   const [hearts, setHearts] = useState();
   const [render, setRender] = useState(false);
 
   const addToFavourites = (id, e) => {
-    // console.log(e.target.innerHTML)
     if (addFav.includes(id)) {
       e.target.innerHTML = likesEmoji.unliked;
       setRender((prev) => !prev);
       console.log("yes it's found");
       const newFavArr = addFav.filter((item) => item !== id);
-
+      localStorage.setItem("favorites", JSON.stringify(newFavArr));
       return dispatch(changeHeart(newFavArr));
     } else {
-      setRender((prev) => !prev);
       e.target.innerHTML = likesEmoji.liked;
-
+      setRender((prev) => !prev);
       console.log("no it's not found");
-      return addFav.push(id);
+      addFav.push(id);
+      localStorage.setItem("favorites", JSON.stringify(addFav));
+      return;
     }
   };
   const heart = (id) => {
@@ -64,11 +65,8 @@ const SearchItem = ({ hotel }) => {
   };
   return (
     <div className="searchItem">
-      {/* <img
-        src={hotel.HotelImg}
-        alt=""
-        className="siImg"
-      /> */}
+      {/* console.log(favMovie); */}
+      <div> </div>
       <Link
         to={`/hotels/${hotel._id}`}
         className="text-dark"
@@ -109,27 +107,21 @@ const SearchItem = ({ hotel }) => {
         <div className="siDetailsTexts">
           <span className="siPrice">$123</span>
           <span className="siTaxOp">Includes taxes and fees</span>
-          <button onClick={handleSearch} className="siCheckButton">
-            See availability
-          </button>
+
+          {/* <Link
+            to={`/hotels/${hotel._id}`}>
+          <button className="siCheckButton">See availability</button>
+          </Link> */}
+          <button onClick={handleSearch} className="siCheckButton">See availability</button>
           <br />
           <div>
-          <button
-              style={{
-                background: "none",
-                border: "none",
-                outline: "none",
-                lineHeight: "0",
-              }}
-              onClick={(e) => addToFavourites(hotel._id, e)}
-            >
-              {addFav.includes(hotel._id) ? (
-                <AiFillHeart style={{ color: "red" }} />
-              ) : (
-                <AiOutlineHeart />
-              )}
-            </button>
-
+        
+                    {favorites.includes(hotel._id) ? (
+                      <AiFillHeart onClick={(e) => addToFavourites(hotel._id, e)} style={{ color: "red" }} />
+                    ) : (
+                      <AiOutlineHeart onClick={(e) => addToFavourites(hotel._id, e)} />
+                    )}
+             
 
           </div>
         </div>
